@@ -15,6 +15,10 @@ export class ProductTable1714081374740 implements MigrationInterface {
             generationStrategy: 'increment',
           }),
           new TableColumn({
+            name: 'productStorageId',
+            type: 'int',
+          }),
+          new TableColumn({
             name: 'productName',
             type: 'nvarchar',
             length: '50',

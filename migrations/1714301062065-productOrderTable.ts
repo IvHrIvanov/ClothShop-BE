@@ -1,32 +1,26 @@
 import { MigrationInterface, QueryRunner, Table, TableColumn } from 'typeorm';
 
-export class OrderTable1714129425926 implements MigrationInterface {
+export class UserOrderTable1714301062065 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'orders',
+        name: 'productOrder',
         columns: [
           new TableColumn({
-            name: 'orderId',
+            name: 'productOrderId',
             type: 'int',
+            isGenerated: true,
             isPrimary: true,
             isUnique: true,
-            isGenerated: true,
             generationStrategy: 'increment',
           }),
           new TableColumn({
-            name: 'orderUserId',
+            name: 'productOrderProductId',
             type: 'int',
           }),
           new TableColumn({
-            name: 'orderNumber',
+            name: 'productOrderOrderId',
             type: 'int',
-            isUnique: true,
-            isGenerated: true,
-          }),
-          new TableColumn({
-            name: 'orderDate',
-            type: 'date',
           }),
           new TableColumn({
             name: 'updatedAt',
@@ -43,5 +37,7 @@ export class OrderTable1714129425926 implements MigrationInterface {
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('productOrder')
+  }
 }
