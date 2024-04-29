@@ -1,7 +1,6 @@
 import { DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
-import { ProductEntity } from 'repository/entities/product.entity';
 
 dotenv.config();
 
