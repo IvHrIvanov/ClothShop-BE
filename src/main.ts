@@ -9,8 +9,10 @@ async function bootstrap() {
     .setTitle('Cloth shop')
     .setVersion('1.0')
     .build();
+  app.enableCors();
+  app.setGlobalPrefix('api');
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api/docs/', app, document);
 
   await app.listen(3000);
 }
