@@ -9,6 +9,7 @@ async function bootstrap() {
     .setTitle('Cloth shop')
     .setVersion('1.0')
     .build();
+    
   app.enableCors();
   app.setGlobalPrefix('api');
   const document = SwaggerModule.createDocument(app, config);

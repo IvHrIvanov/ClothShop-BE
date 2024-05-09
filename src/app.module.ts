@@ -4,7 +4,8 @@ import { ormConfig } from './orm/ormConfig';
 import { ServiceModule } from './services/service.module';
 import { ConfigModule } from '@nestjs/config';
 import { RepositoryModule } from './repository/repository.module';
-import { ControllersModule } from './controllers/controllers.module';
+import { UserController } from './controllers/user/user.controller';
+import { UserService } from './controllers/user/user.service';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { ControllersModule } from './controllers/controllers.module';
     }),
     RepositoryModule,
     ServiceModule,
-    ControllersModule,
   ],
+  controllers: [UserController],
+  providers: [UserService],
 })
 export class AppModule {}
