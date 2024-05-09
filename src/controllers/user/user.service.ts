@@ -1,10 +1,10 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { UserRegisterRequest } from './dto/requests/userRegister.request';
-import { HashService } from 'src/services/hash.service';
-import { RepositoryService } from 'src/repository/repository.service';
+import { HashService } from '../../services/hash.service';
+import { RepositoryService } from '../../repository/repository.service';
 import { UserLoginRequest } from './dto/requests/userLogin.request';
 import { TokenResponse } from './dto/response/token.response';
-import { JwtService } from 'src/services/jwt.service';
+import { JwtService } from '../../services/jwt.service';
 
 @Injectable()
 export class UserService {
@@ -32,6 +32,7 @@ export class UserService {
     const jwtToken = await this.jwtService.sign(userDb.userId);
     return new TokenResponse({ token: jwtToken });
   }
+
   async userRegister(body: UserRegisterRequest): Promise<void> {
     const { userEmail, userPassword, userName } = body;
     const userDb = await this.repository.user.findOne({
